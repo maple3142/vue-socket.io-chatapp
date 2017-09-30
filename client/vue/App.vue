@@ -11,6 +11,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="javascript:void(0)" @click="change">Change name</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0)">{{user}}</a>
+					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0" @submit.prevent="join">
 					<input class="form-control mr-sm-2" type="text" placeholder="Channel name" aria-label="Channel name" v-model="channel">
@@ -19,7 +22,7 @@
 			</div>
 		</nav>
 		<div class="container">
-			<router-view :user="user"></router-view>
+			<router-view :user="user" class="p-2"></router-view>
 		</div>
 	</div>
 </template>

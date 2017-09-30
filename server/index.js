@@ -23,7 +23,7 @@ io.on('connection', socket => {
 	socket.emit('connect')
 	socket.on('register', ({user}) => {
 		idtable[socket.id] = user
-		console.log(`user: ${user} registered`)
+		console.log(`${user} registered`)
 	})
 	socket.on('join', ({channel}) => {
 		let user=idtable[socket.id]
@@ -44,9 +44,10 @@ io.on('connection', socket => {
 	})
 	socket.on('disconnect', () => {
 		let user = idtable[socket.id]
-		chat.disconnect(user)
+		delete idtable[socket.id]
+		let chs=chat.clear(user)
 
-		io.emit('disconnect', { user })
+		io.emit('disc', { user,channel: chs})
 		
 		console.log(`${user} disconnected`)
 	})
@@ -56,7 +57,7 @@ io.on('connection', socket => {
 		
 		io.emit('chat', chat.getMessage(channel))
 		
-		console.log(`${user} send ${msg} on #${channel}`)
+		console.log(`${user} send "${msg}" on #${channel}`)
 	})
 	socket.on('getuser', ({ channel }) => {
 		socket.emit('getuser',chat.getUser(channel))

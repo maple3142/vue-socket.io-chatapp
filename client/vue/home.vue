@@ -6,6 +6,9 @@
 <script>
 import page from './page'
 export default {
-	mixins: [page]
+	mixins: [page],
+	created() {
+		document.title = 'Chat'
+	}
 }
 </script>

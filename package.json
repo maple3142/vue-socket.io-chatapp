@@ -26,6 +26,7 @@
     "vue-router": "^2.7.0",
     "vue-socket.io": "^2.1.1-a",
     "vue-template-compiler": "2.4.4",
+    "vue-toast": "^3.1.0",
     "vuejs-storage": "^0.3.1",
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^1.12.0",

@@ -32,10 +32,16 @@ exports.removeUser = (cha, name) => {
 	return true
 }
 
-exports.disconnect = name => {
-	for (let cha of channel) {
-		cha.userlist.delete(name)
+exports.clear = name => {
+	let chs=[]
+	for (let ch in channel) {
+		let cha=channel[ch]
+		if (cha.userlist.has(name)) {
+			chs.push(ch)
+			cha.userlist.delete(name)
+		}
 	}
+	return chs
 }
 
 exports.addMessage = (cha, msg) => {
