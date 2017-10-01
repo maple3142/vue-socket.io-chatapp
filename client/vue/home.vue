@@ -1,6 +1,6 @@
 <template>
 	<div class="col-xs-12">
-		<h3>Username: {{user}}</h3>
+		<h3>Hello, enter channel from top right input</h3>
 	</div>
 </template>
 <script>

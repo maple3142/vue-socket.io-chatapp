@@ -6,13 +6,17 @@ const io = require('socket.io')(http)
 if (process.env.NODE_ENV === 'development') {
 	require('./dev')(app)
 }
-
+else {
+	app.get('/bundle.js', (req, res) => {
+		res.sendFile(__dirname + '/bundle.js')
+	})
+}
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html')
 })
 
-http.listen(3000, () => {//dev port
-	console.log('server started')
+http.listen(process.env.PORT || process.argv[2] || 3000, () => {//dev port
+	console.log(`server listen on ${http.address().address}:${http.address().port}`)
 })
 
 const chat=require('./chat')

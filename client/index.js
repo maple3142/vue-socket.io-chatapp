@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
 
 import Vue from 'vue'
 import VueSocketio from 'vue-socket.io'
@@ -19,6 +20,8 @@ new Vue({
 })
 
 //webpack-hot-middleware reload
-if (module.hot) {
-	module.hot.accept()
+if (__DEV__) {
+	if (module.hot) {
+		module.hot.accept()
+	}
 }

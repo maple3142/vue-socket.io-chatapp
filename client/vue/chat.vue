@@ -4,7 +4,7 @@
 		<h3>#{{channel}}</h3>
 		<div class="row">
 			<div class="col-8">
-				<div class="messages">
+				<div class="messages bsbox">
 					<div class="card" v-for="(msg,idx) in chatlist" :key="idx">
 						<div class="card-body">
 							<h4 class="card-title">{{msg.user}}</h4>
@@ -78,7 +78,7 @@ export default {
 		},
 		disc({ channel, user }) {
 			if (channel.includes(this.channel) && user !== this.user) {
-				this.toast.showToast(`User ${user} leaved`, { theme: '', timeLife: 3000 })
+				this.toast.showToast(`User ${user} leaved`, { theme: 'error', timeLife: 3000 })
 			}
 			this.$socket.emit('getuser', { channel: this.channel })
 		}
@@ -109,6 +109,11 @@ export default {
 }
 </script>
 <style scoped>
+.bsbox{
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: .25rem;
+}
+
 .messages {
 	overflow-y: scroll;
 	height: 70vh;

@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const wpconfig = require('../webpack.config.js')
+const wpconfig = require('../webpack.config')
 const compiler = webpack(wpconfig)
 module.exports = app => {
 	app.use(require("webpack-dev-middleware")(compiler, {
